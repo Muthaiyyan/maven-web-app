@@ -13,14 +13,14 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
-  </dependency>
-    
+    </dependency>
+ </dependencies>
+
   <properties>
    <sonar.host.url>http://35.154.125.0:9000/</sonar.host.url>
    <sonar.login>sqa_985204be4b5211dfc78722e6f057a943cd93fd3e</sonar.login>
   </properties>
-    
-  </dependencies>
+  
   <build>
     <finalName>maven-web-app</finalName>
     <plugins>
