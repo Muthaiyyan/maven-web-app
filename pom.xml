@@ -7,13 +7,19 @@
   <version>3.0-RELEASE</version>
   <name>01-maven-web-app</name>
   <url>http://maven.apache.org</url>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
     </dependency>
-   
+    
+  <properties>
+   <sonar.host.url>http://35.154.125.0:9000/</sonar.host.url>
+   <sonar.login>sqa_985204be4b5211dfc78722e6f057a943cd93fd3e</sonar.login>
+  </properties>
+    
   </dependencies>
   <build>
     <finalName>maven-web-app</finalName>
