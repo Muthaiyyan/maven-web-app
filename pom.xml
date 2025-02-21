@@ -21,6 +21,20 @@
    <sonar.login>sqa_985204be4b5211dfc78722e6f057a943cd93fd3e</sonar.login>
   </properties>
   
+  <distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <name>SCOPEINDIA Releases Nexus Repo</name>
+      <url>http://13.127.46.82:8081/repository/ephproj-release-repo/</url>
+     </repository>
+	  
+    <snapshotRepository>
+      <id>nexus</id>
+      <name>SCOPEINDIA Snapshot Nexus Repo</name>
+      <url>http://13.127.46.82:8081/repository/ephproj-snapshot-repo/</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
   <build>
     <finalName>maven-web-app</finalName>
     <plugins>
