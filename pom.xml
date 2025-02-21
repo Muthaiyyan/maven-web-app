@@ -4,11 +4,17 @@
   <groupId>org.scopeindia</groupId>
   <artifactId>01-maven-web-app</artifactId>
   <packaging>war</packaging>
-  <version>3.0-RELEASE</version>
+  <version>RELEASE-1.0</version>
   <name>01-maven-web-app</name>
   <url>http://maven.apache.org</url>
   
   <dependencies>
+    <dependency>
+       <groupId>org.scopeindia</groupId>
+       <artifactId>maven-web-app</artifactId>
+       <version>RELEASE-1.0</version>
+    </dependency>
+	  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
