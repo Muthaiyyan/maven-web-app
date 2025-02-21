@@ -9,11 +9,11 @@
   <url>http://maven.apache.org</url>
   
   <dependencies>
-    <dependency>
+    <!-- <dependency>
        <groupId>org.scopeindia</groupId>
        <artifactId>maven-web-app</artifactId>
        <version>RELEASE-1.0</version>
-    </dependency>
+    </dependency> -->
 	  
     <dependency>
       <groupId>junit</groupId>
