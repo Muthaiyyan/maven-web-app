@@ -1,3 +1,5 @@
+// Scripted pipeline for CI-CD
+
 node {
     stage('Git Clone') { // for display purpose
         git 'https://github.com/Muthaiyyan/maven-web-app.git'
