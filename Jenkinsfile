@@ -1,20 +1,46 @@
-pipeline {  
-
+pipeline {
     agent any
+        environment {
+            DOCKER_IMAGE = "ephrash1/mavenwebapp01"
+            DOCKER_TAG = "latest"
+            EKS_CLUSTER_NAME = "ephrash-cluster"
+            KUBECONFIG = credentials('K8s-credentials')
         
-    tools{
-        maven "Maven-3.9.9"
+        //KUBE_CONFIG = "/home/ubuntu/.kube/config"
     }
     stages {
-        stage('Clone') {
+        stage('Source Code Checkout') {
             steps {
-               git 'https://github.com/suffixscope/maven-web-app.git'
+                git branch: 'master', url: 'https://github.com/Muthaiyyan/maven-web-app.git'
+                sh 'rm -f k8s-deploy.yml'  // Remove these if present in Git
+                }
             }
-        }
-        stage('Build') {
+        stage('Build with Maven') {
             steps {
-               sh 'mvn clean package'
+                sh 'mvn clean package'
+                }
             }
+        stage('Build Docker Image (Using Local Dockerfile)') {
+            steps {
+                sh 'docker system prune -a -f'
+                sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG -f /var/lib/jenkins/workspace/Project2/Dockerfile .'
+                }
+            }
+        stage('Push Docker Image') {
+            steps {
+                withDockerRegistry([credentialsId: 'Docker-Credential', url: '']) {
+                    sh 'docker push $DOCKER_IMAGE:$DOCKER_TAG'
+                }
+            }
+         }
+        stage('Deploy to Kubernetes (Using Local Deployment YAML)') {
+            steps {
+                sh 'kubectl get nodes'
+                sh 'kubectl delete all --all'
+                sh 'kubectl apply -f /var/lib/jenkins/workspace/Project2/deploy-k8s.yaml'
+                sh 'kubectl get all'
+                sh 'kubectl get svc'
+            }
+         }
         }
     }
-}
