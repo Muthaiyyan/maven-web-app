@@ -35,11 +35,11 @@ pipeline {
          }
         stage('Deploy to Kubernetes (Using Local Deployment YAML)') {
             steps {
-                sh 'kubectl get nodes'
-                sh 'kubectl delete all --all'
-                sh 'kubectl apply -f /var/lib/jenkins/workspace/Project2/deploy-k8s.yaml'
-                sh 'kubectl get all'
-                sh 'kubectl get svc'
+                sh 'sudo kubectl get nodes'
+                sh 'sudo kubectl delete all --all'
+                sh 'sudo kubectl apply -f /var/lib/jenkins/workspace/Project2/deploy-k8s.yaml'
+                sh 'sudo kubectl get all'
+                sh 'sudo kubectl get svc'
             }
          }
         }
