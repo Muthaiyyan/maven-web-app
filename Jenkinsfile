@@ -35,7 +35,7 @@ pipeline {
          }
         stage('Deploy to Kubernetes (Using Local Deployment YAML)') {
             steps {
-
+                sh 'aws eks --region us-east-1 update-kubeconfig --name ephrash-cluster'
                 sh 'kubectl apply -f /var/lib/jenkins/workspace/Project2/deploy-k8s.yaml'
                 sh 'kubectl get svc'
             }
